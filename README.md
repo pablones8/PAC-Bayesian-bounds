@@ -17,7 +17,7 @@ Both models are trained to distinguish phases characterized by different regimes
   Saves training/test accuracy, loss, generalization gap and regularization metrics to `QCNN.csv`.
 
 - **`DPQC.py`**  
-  Main script that implements and trains the DPQC (measurement-controlled dynamic circuit) architecture.  
+  Main script that implements and trains the DPQC architecture.  
   Similarly runs 500 independent experiments and saves results to `DPQC.csv`.
 
 - **`QCNN.csv`** & **`DPQC.csv`**  
