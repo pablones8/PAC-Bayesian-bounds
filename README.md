@@ -24,13 +24,10 @@ Both models are trained to distinguish phases characterized by different regimes
   Results of the X training runs for each architecture.  
   Columns include: iteration, seed, train/test accuracy & loss, generalization errors, regularization terms (β or norm-based), and phase sample distribution.
 
-- **`plot.py`** (to be added)  
-  Script used to generate all figures appearing in the article.
 
 ## Requirements
 
 - Python 3.8+
 - PennyLane (with default.qubit simulator)
 - NumPy, SciPy, scikit-learn
-- Matplotlib / Seaborn (for plotting)
 
