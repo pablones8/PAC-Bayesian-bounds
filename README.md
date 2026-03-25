@@ -1,6 +1,6 @@
 # A PAC-Bayesian approach to generalization for quantum models
 
-This repository contains the implementation and numerical results for the experiments presented in the article "A PAC-Bayesian approach to generalization in quantum models", available on [arXiv](https://arxiv.org/abs/2501.10077).
+This repository contains the implementation and numerical results for the experiments presented in the article "A PAC-Bayesian approach to generalization in quantum models", available on [arXiv](https://arxiv.org/pdf/2603.22964).
 
 The code computes generalization errors of two quantum machine learning architectures for classifying ground states of a generalized cluster Hamiltonian into four distinct quantum phases:
 
