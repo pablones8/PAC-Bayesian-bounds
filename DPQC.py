@@ -173,16 +173,16 @@ def F_prob(theta, phi, varphi, main_wire, ancilla_wire):
 
 
 # ───────────────────────────────────────────────
-#                   Main QCNN circuit
+#                   Main DPQC circuit
 # ───────────────────────────────────────────────
 
 dev = qml.device("default.qubit", wires=18)
 
 
 @qml.qnode(dev)
-def QCNN(params_F1, params_U1, params_F2, params_U2, params_convolutions, x, y):
+def DPQC(params_F1, params_U1, params_F2, params_U2, params_convolutions, x, y):
     """
-    QCNN with amplitude embedding + two layers of conditional F blocks
+    DPQC with amplitude embedding + two layers of conditional F blocks
     + final convolution layer before measurement.
     """
     # Embed real part of ground state vector
@@ -219,7 +219,7 @@ def test(params_F1, params_U1, params_F2, params_U2, params_convolutions, x, y, 
     fidelity_values = []
 
     for xi in x:
-        fidel_fn = lambda dm: QCNN(params_F1, params_U1, params_F2, params_U2, params_convolutions, xi, dm)
+        fidel_fn = lambda dm: DPQC(params_F1, params_U1, params_F2, params_U2, params_convolutions, xi, dm)
         fidelities = [fidel_fn(dm) for dm in dm_labels]
         pred = np.argmax(fidelities)
         predicted.append(pred)
@@ -333,7 +333,7 @@ def cost(params_F1, params_U1, params_F2, params_U2, params_convolutions, x, y, 
 
     loss = 0.0
     for i in range(len(x)):
-        f = QCNN(params_F1, params_U1, params_F2, params_U2, params_convolutions, x[i], dm_labels[int(y[i])])
+        f = DPQC(params_F1, params_U1, params_F2, params_U2, params_convolutions, x[i], dm_labels[int(y[i])])
         loss += (1 - f) ** 2
 
     # Regularization: product of spectral norms of single-qubit channels
