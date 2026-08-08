@@ -4,8 +4,8 @@ This repository contains the implementation and numerical results for the experi
 
 The code computes generalization errors of two quantum machine learning architectures for classifying ground states of a generalized cluster Hamiltonian into four distinct quantum phases:
 
-- **QCNN** — Quantum Convolutional Neural Network (with amplitude embedding + convolution + pooling layers)
-- **DPQC** — Dynamic Parameterized Quantum Circuit (sequential conditional single-qubit operations controlled by measurements + final convolution)
+- **QCNN** — Quantum Convolutional Neural Network: Operates on six data qubits. The first layer applies shared-parameter two-qubit unitaries, one dynamic block per qubit, and a pooling operation (controlled rotation followed by partial trace), reducing the register from six to three qubits. The second layer repeats the same structure: shared two-qubit unitaries, two dynamic blocks per qubit, and pooling of one qubit, reducing from three to two qubits. The final two qubits are measured to determine the label of the four-class classification task.
+- **DPQC** — Dynamic Parameterized Quantum Circuit: Operates on four data qubits. The first layer applies one dynamic block per qubit followed by a convolution of parameterized two-qubit unitaries. The second layer applies two consecutive dynamic blocks per qubit. Two of the four qubits are measured to assign the class label.
 
 Both models are trained to distinguish phases characterized by different regimes of the coupling parameters J₁ and J₂.
 
@@ -21,7 +21,7 @@ Both models are trained to distinguish phases characterized by different regimes
   Similarly runs 500 independent experiments and saves results to `DPQC.csv`.
 
 - **`QCNN.csv`** & **`DPQC.csv`**  
-  Results of the X training runs for each architecture.  
+  Results of the X training runs for each architecture. All points have training accuracy $\geq$0.75.
   Columns include: iteration, seed, train/test accuracy & loss, generalization errors, regularization terms (β or norm-based), and phase sample distribution.
 
 
